@@ -19,6 +19,12 @@ function App() {
     setTaskText("");
   };
 
+  const handleDelete=(indexToremove)=>{
+    const updateTasks=tasks.filter((task,index)=>index !==indexToremove);
+
+    setTasks(updateTasks);
+  };
+
   return (
     <div>
       <h1>React To-Do List</h1>
@@ -33,7 +39,10 @@ function App() {
       <button onClick={handleAddTask}>Add Task</button>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>{tasks}</li>
+          <li key={index}>{tasks}
+          <button onClick={()=> handleDelete(index)} style={{marginLeft:"10px"}}>❌</button>
+          
+          </li>
         ))}
       </ul>
 
