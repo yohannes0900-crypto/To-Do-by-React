@@ -45,12 +45,12 @@ function App() {
         onChange={(event) => setTaskText(event.target.value)} 
       />
       
-      <button onClick={handleAddTask}>Add Task</button>
+      <button className='add-btn' onClick={handleAddTask}>Add Task</button>
       </div>
       <ul className='task-list'>
         {tasks.map((task, index) => (
-          <li key={index} className='task-list'>
-            <span className='task-text'>{tasks}</span>
+          <li key={index} className='task-item'>
+            <span className='task-text'>{task}</span>
           <button className='delete-btn' onClick={()=> handleDelete(index)}> Delete</button>
           
           </li>
