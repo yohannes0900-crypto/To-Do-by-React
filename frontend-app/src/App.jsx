@@ -35,9 +35,9 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='app-container'>
       <h1>React To-Do List</h1>
-      
+      <div className='input-group'>
       <input 
         type="text" 
         placeholder="Enter a new task..." 
@@ -46,10 +46,12 @@ function App() {
       />
       
       <button onClick={handleAddTask}>Add Task</button>
-      <ul>
+      </div>
+      <ul className='task-list'>
         {tasks.map((task, index) => (
-          <li key={index}>{tasks}
-          <button onClick={()=> handleDelete(index)} style={{marginLeft:"10px"}}>❌</button>
+          <li key={index} className='task-list'>
+            <span className='task-text'>{tasks}</span>
+          <button className='delete-btn' onClick={()=> handleDelete(index)}> Delete</button>
           
           </li>
         ))}
