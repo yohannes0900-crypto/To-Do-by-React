@@ -6,6 +6,19 @@ function App() {
   // 2. Fix the function call here
   const [taskText, setTaskText] = useState("");
 
+  const [tasks, setTasks]=useState([]);
+
+  const handleAddTask=()=>{
+    if(taskText==""){
+      alert("please enter a task first");
+      return;
+    }
+
+    setTasks([...tasks,taskText]);
+
+    setTaskText("");
+  };
+
   return (
     <div>
       <h1>React To-Do List</h1>
@@ -17,9 +30,14 @@ function App() {
         onChange={(event) => setTaskText(event.target.value)} 
       />
       
-      <button>Add Task</button>
+      <button onClick={handleAddTask}>Add Task</button>
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>{tasks}</li>
+        ))}
+      </ul>
 
-      <p>You are typing: {taskText}</p> 
+     
     </div>
   );
 }
