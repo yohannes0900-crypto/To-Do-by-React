@@ -1,12 +1,21 @@
 // 1. Fix the import here
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
   // 2. Fix the function call here
   const [taskText, setTaskText] = useState("");
 
-  const [tasks, setTasks]=useState([]);
+  const [tasks,setTasks]=useState(()=>{
+    const savedTasks=localStorage.getItem("reactTasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
+  useEffect(()=>{
+    localStorage.setItem("reactTasks", JSON.stringify(tasks));
+  },[tasks]);
+
+
 
   const handleAddTask=()=>{
     if(taskText==""){
